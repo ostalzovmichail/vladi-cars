@@ -1,0 +1,108 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: vladi
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vladi_secret}
+      POSTGRES_DB: vladi_cars
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vladi -d vladi_cars"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  catalog:
+    build:
+      context: .
+      dockerfile: apps/backend/catalog/Dockerfile
+    restart: always
+    environment:
+      PORT: 3001
+      DATABASE_URL: "postgresql://vladi:${POSTGRES_PASSWORD:-vladi_secret}@postgres:5432/vladi_cars"
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  auth:
+    build:
+      context: .
+      dockerfile: apps/backend/auth/Dockerfile
+    restart: always
+    environment:
+      PORT: 3004
+      DATABASE_URL: "postgresql://vladi:${POSTGRES_PASSWORD:-vladi_secret}@postgres:5432/vladi_cars"
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  cart:
+    build:
+      context: .
+      dockerfile: apps/backend/cart/Dockerfile
+    restart: always
+    environment:
+      PORT: 3002
+      DATABASE_URL: "postgresql://vladi:${POSTGRES_PASSWORD:-vladi_secret}@postgres:5432/vladi_cars"
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  orders:
+    build:
+      context: .
+      dockerfile: apps/backend/orders/Dockerfile
+    restart: always
+    environment:
+      PORT: 3003
+      DATABASE_URL: "postgresql://vladi:${POSTGRES_PASSWORD:-vladi_secret}@postgres:5432/vladi_cars"
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: apps/backend/api-gateway/Dockerfile
+    restart: always
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      PORT: 3000
+      CATALOG_URL: http://catalog:3001
+      AUTH_URL: http://auth:3004
+      CART_URL: http://cart:3002
+      ORDERS_URL: http://orders:3003
+      CORS_ORIGIN: https://${DOMAIN:-vladi-cars.ru}
+    depends_on:
+      catalog:
+        condition: service_started
+      auth:
+        condition: service_started
+      cart:
+        condition: service_started
+      orders:
+        condition: service_started
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+      args:
+        VITE_API_URL: /api
+    restart: always
+    ports:
+      - "127.0.0.1:80:80"
+    depends_on:
+      - api-gateway
+
+volumes:
+  pgdata:
