@@ -48,6 +48,11 @@ model Product {
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
+  @@index([category, brand, inStock])
+  @@index([brand])
+  @@index([modelName])
+  @@index([year])
+  @@index([condition])
   @@map("products")
 }
 
@@ -83,6 +88,8 @@ model Order {
   createdAt DateTime    @default(now()) @map("created_at")
   updatedAt DateTime    @updatedAt @map("updated_at")
 
+  @@index([userId])
+  @@index([status])
   @@map("orders")
 }
 
@@ -96,5 +103,6 @@ model OrderItem {
   quantity  Int
   image     String  @default("")
 
+  @@index([orderId])
   @@map("order_items")
 }

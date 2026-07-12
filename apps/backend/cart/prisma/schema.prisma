@@ -40,6 +40,11 @@ model Product {
   cartItems CartItem[]
   favorites Favorite[]
 
+  @@index([category, brand, inStock])
+  @@index([brand])
+  @@index([modelName])
+  @@index([year])
+  @@index([condition])
   @@map("products")
 }
 

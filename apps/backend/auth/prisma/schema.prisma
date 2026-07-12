@@ -28,6 +28,8 @@ model PasswordResetToken {
   used      Boolean  @default(false)
   createdAt DateTime @default(now()) @map("created_at")
 
+  @@index([email])
+  @@index([expiresAt])
   @@map("password_reset_tokens")
 }
 
@@ -58,5 +60,10 @@ model Product {
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
+  @@index([category, brand, inStock])
+  @@index([brand])
+  @@index([modelName])
+  @@index([year])
+  @@index([condition])
   @@map("products")
 }

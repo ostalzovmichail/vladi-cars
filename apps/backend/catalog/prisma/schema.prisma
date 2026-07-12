@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id        String   @id
-  name      String
-  email     String
-  passwordHash String @map("password_hash")
-  phone     String?
-  role      String  @default("customer")
-  createdAt DateTime @default(now()) @map("created_at")
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  phone        String?
+  role         String   @default("customer")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
 
   @@map("users")
 }
@@ -38,6 +39,8 @@ model Review {
   text      String
   createdAt DateTime @default(now()) @map("created_at")
 
+  @@index([productId])
+  @@index([userId])
   @@map("reviews")
 }
 
@@ -57,5 +60,10 @@ model Product {
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
+  @@index([category, brand, inStock])
+  @@index([brand])
+  @@index([modelName])
+  @@index([year])
+  @@index([condition])
   @@map("products")
 }
