@@ -172,8 +172,19 @@ jobs:
             set -e
             cd /opt/vladi-cars
             git pull
-            echo "REGISTRY=${{ env.REGISTRY }}" >> .env
-            echo "IMAGE_TAG=${{ env.IMAGE_TAG }}" >> .env
+
+            # Update REGISTRY and IMAGE_TAG in .env
+            if grep -q "^REGISTRY=" .env; then
+              sed -i "s|^REGISTRY=.*|REGISTRY=${{ env.REGISTRY }}|" .env
+            else
+              echo "REGISTRY=${{ env.REGISTRY }}" >> .env
+            fi
+            if grep -q "^IMAGE_TAG=" .env; then
+              sed -i "s|^IMAGE_TAG=.*|IMAGE_TAG=${{ env.IMAGE_TAG }}|" .env
+            else
+              echo "IMAGE_TAG=${{ env.IMAGE_TAG }}" >> .env
+            fi
+
             docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
             docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
             docker image prune -f

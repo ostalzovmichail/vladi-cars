@@ -18,5 +18,6 @@ COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
 COPY --from=builder /app/packages ./packages
 RUN pnpm install --prod --frozen-lockfile
+RUN mkdir -p uploads
 EXPOSE 3001
 CMD ["node", "dist/src/main.js"]

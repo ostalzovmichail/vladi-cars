@@ -25,6 +25,8 @@ services:
       PORT: 3001
       DATABASE_URL: "postgresql://vladi:${POSTGRES_PASSWORD:-vladi_secret}@postgres:5432/vladi_cars"
       JWT_SECRET: ${JWT_SECRET}
+    volumes:
+      - uploads:/app/uploads
     depends_on:
       postgres:
         condition: service_healthy
@@ -106,3 +108,4 @@ services:
 
 volumes:
   pgdata:
+  uploads:
