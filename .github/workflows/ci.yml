@@ -55,7 +55,11 @@ jobs:
           pnpm prisma:generate
 
       - name: Push DB schema
-        run: pnpm db:push
+        run: |
+          for svc in auth catalog cart orders; do
+            echo "--- Pushing $svc ---"
+            cd apps/backend/$svc && npx prisma db push --accept-data-loss 2>&1 | tail -3 && cd ../../..
+          done
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
           JWT_SECRET: ci-test-secret
