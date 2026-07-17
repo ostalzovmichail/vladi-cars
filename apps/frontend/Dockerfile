@@ -4,7 +4,7 @@ ENV VITE_API_URL=$VITE_API_URL
 RUN npm install -g pnpm@11.11.0
 WORKDIR /app
 COPY . .
-RUN pnpm install --frozen-lockfile
+RUN pnpm install --no-frozen-lockfile
 RUN pnpm --filter @vladi-cars/frontend build
 
 FROM nginx:alpine AS runner
