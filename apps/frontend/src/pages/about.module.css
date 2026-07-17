@@ -1,0 +1,110 @@
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  padding: 48px 0 40px;
+}
+
+.heroTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1a1a1e;
+  margin: 0 0 12px;
+}
+
+.heroText {
+  font-size: 15px;
+  color: #7a7a82;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.cardTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1e;
+  margin: 0 0 8px;
+}
+
+.cardText {
+  font-size: 14px;
+  color: #7a7a82;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contacts {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 48px;
+}
+
+.contactsTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1a1a1e;
+  margin: 0 0 24px;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 640px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contactLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: #7a7a82;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contactValue {
+  font-size: 15px;
+  color: #1a1a1e;
+}

@@ -1,0 +1,26 @@
+.wrap {
+  padding: 40px;
+  text-align: center;
+}
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #c8191a;
+}
+.text {
+  color: #7a7a82;
+  margin-bottom: 16px;
+}
+.retryBtn {
+  padding: 10px 24px;
+  background: #c8191a;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}

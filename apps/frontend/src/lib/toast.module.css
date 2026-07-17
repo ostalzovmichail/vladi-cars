@@ -1,0 +1,41 @@
+.container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 360px;
+}
+.toast {
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  animation: slideIn 0.2s ease;
+}
+.toastError {
+  background: #c8191a;
+}
+.toastSuccess {
+  background: #16a34a;
+}
+.toastInfo {
+  background: #1a1a1e;
+}
+
+@media (max-width: 640px) {
+  .container {
+    right: 16px;
+    left: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+  .toast {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}

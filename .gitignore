@@ -11,7 +11,4 @@ dist/
 coverage/
 **/generated/prisma/
 
-# Old CRA artifacts
-public/
-src/
 package-lock.json

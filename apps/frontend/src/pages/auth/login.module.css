@@ -1,0 +1,107 @@
+.page {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1a1a1e;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #7a7a82;
+  margin: 0 0 24px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1e;
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  background: #eeecea;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.input:focus {
+  border-color: #c8191a;
+  background: white;
+}
+
+.error {
+  background: #fee2e2;
+  color: #c8191a;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.success {
+  background: #e6f7e6;
+  color: #2e7d32;
+  font-size: 13px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+
+.submit {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #7a7a82;
+}
+
+.footer a {
+  color: #c8191a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.devBox {
+  margin-top: 12px;
+  padding: 12px;
+  background: #f0eee8;
+  border-radius: 8px;
+  font-size: 13px;
+  word-break: break-all;
+}
+.devLink {
+  color: #c8191a;
+}

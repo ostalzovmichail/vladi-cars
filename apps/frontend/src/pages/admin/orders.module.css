@@ -1,0 +1,183 @@
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.count {
+  font-size: 13px;
+  color: #7a7a82;
+  margin: 0 0 24px;
+}
+
+.error {
+  color: #c8191a;
+  text-align: center;
+  padding: 40px 0;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 0;
+  color: #7a7a82;
+}
+
+.emptyTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #1a1a1e;
+}
+
+.emptyText {
+  font-size: 14px;
+  margin: 0 0 24px;
+}
+
+.table {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 100px 1fr 120px 100px 130px 120px;
+  gap: 12px;
+  padding: 14px 16px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7a7a82;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  font-weight: 600;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 100px 1fr 120px 100px 130px 120px;
+  gap: 12px;
+  padding: 14px 16px;
+  font-size: 14px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.tableRow:hover {
+  background: rgba(0,0,0,0.02);
+}
+
+.colUser {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userEmail {
+  font-size: 12px;
+  color: #7a7a82;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status_pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status_confirmed {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status_shipped {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.status_delivered {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.status_cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.statusSelect {
+  padding: 6px 8px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  font-size: 12px;
+  background: white;
+  cursor: pointer;
+}
+
+.statusSelect:disabled {
+  opacity: 0.5;
+}
+
+.linkReset {
+  text-decoration: none;
+}
+.loadingText {
+  text-align: center;
+  padding: 40px 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .tableHeader {
+    display: none;
+  }
+
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    position: relative;
+  }
+
+  .colActions {
+    width: 100%;
+  }
+
+  .statusSelect {
+    width: 100%;
+    padding: 8px 12px;
+  }
+
+  .colId {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .colDate {
+    font-size: 13px;
+    color: #7a7a82;
+  }
+}

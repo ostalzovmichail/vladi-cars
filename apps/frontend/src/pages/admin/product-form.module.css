@@ -1,0 +1,169 @@
+.page {
+  padding: 0;
+}
+.title {
+  font-family: Oswald, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 0 0 24px;
+}
+.empty {
+  text-align: center;
+  color: #7a7a82;
+  padding: 40px 0;
+}
+.emptyTitle {
+  font-family: Oswald, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+.emptyText {
+  margin: 0 0 16px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #555;
+}
+.input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #e0ddd7;
+  border-radius: 4px;
+  background: white;
+}
+.textarea {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #e0ddd7;
+  border-radius: 4px;
+  background: white;
+  resize: vertical;
+}
+.row {
+  display: flex;
+  gap: 16px;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+.cancelBtn {
+  color: #7a7a82;
+  text-decoration: none;
+  font-size: 13px;
+}
+.cancelBtn:hover {
+  text-decoration: underline;
+}
+
+.linkReset {
+  text-decoration: none;
+}
+.submitBtn {
+  padding: 12px 32px;
+  font-size: 13px;
+}
+
+.imageList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.imageItem {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #e0ddd7;
+}
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.imageRemove {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.uploadRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+.uploadBtn {
+  padding: 8px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+.fileInput {
+  display: none;
+}
+.uploadHint {
+  font-size: 11px;
+  color: #999;
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form {
+    max-width: none;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .submitBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
