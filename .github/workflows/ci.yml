@@ -66,17 +66,23 @@ jobs:
 
       - name: Lint
         run: |
-          cd apps/frontend && npx tsc --noEmit && cd ../..
-          cd apps/backend/catalog && npx tsc --noEmit && cd ../../..
-          cd apps/backend/auth && npx tsc --noEmit && cd ../../..
-          cd apps/backend/cart && npx tsc --noEmit && cd ../../..
-          cd apps/backend/orders && npx tsc --noEmit && cd ../../..
-          cd apps/backend/api-gateway && npx tsc --noEmit && cd ../../..
+          cd apps/frontend && npx --no-install tsc --noEmit && cd ../..
+          cd apps/backend/catalog && npx --no-install tsc --noEmit && cd ../../..
+          cd apps/backend/auth && npx --no-install tsc --noEmit && cd ../../..
+          cd apps/backend/cart && npx --no-install tsc --noEmit && cd ../../..
+          cd apps/backend/orders && npx --no-install tsc --noEmit && cd ../../..
+          cd apps/backend/api-gateway && npx --no-install tsc --noEmit && cd ../../..
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
 
       - name: Test
-        run: pnpm --filter @vladi-cars/frontend test run && pnpm --filter @vladi-cars/catalog test && pnpm --filter @vladi-cars/auth test && pnpm --filter @vladi-cars/cart test && pnpm --filter @vladi-cars/orders test && pnpm --filter @vladi-cars/api-gateway test
+        run: |
+          cd apps/backend/catalog && npx --no-install jest --forceExit && cd ../../..
+          cd apps/backend/auth && npx --no-install jest --forceExit && cd ../../..
+          cd apps/backend/cart && npx --no-install jest --forceExit && cd ../../..
+          cd apps/backend/orders && npx --no-install jest --forceExit && cd ../../..
+          cd apps/backend/api-gateway && npx --no-install jest --forceExit && cd ../../..
+          cd apps/frontend && npx --no-install vitest run && cd ../..
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
           JWT_SECRET: ci-test-secret
