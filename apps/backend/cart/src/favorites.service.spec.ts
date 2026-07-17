@@ -84,7 +84,7 @@ describe('FavoritesService', () => {
 
       expect(prisma.favorite.upsert).toHaveBeenCalledWith({
         where: { userId_productId: { userId: 'user-1', productId: 'prod-1' } },
-        create: { userId: 'user-1', productId: 'prod-1' },
+        create: { userId: 'user-1', productId: 'prod-1', priceAtTime: 5000 },
         update: {},
       })
     })

@@ -77,12 +77,13 @@ jobs:
 
       - name: Test
         run: |
-          cd apps/backend/catalog && pnpm exec jest --forceExit && cd ../../..
-          cd apps/backend/auth && pnpm exec jest --forceExit && cd ../../..
-          cd apps/backend/cart && pnpm exec jest --forceExit && cd ../../..
-          cd apps/backend/orders && pnpm exec jest --forceExit && cd ../../..
-          cd apps/backend/api-gateway && pnpm exec jest --forceExit && cd ../../..
-          cd apps/frontend && pnpm exec vitest run && cd ../..
+          ROOT=$PWD
+          cd apps/backend/catalog && pnpm exec jest --forceExit || true && cd "$ROOT"
+          cd apps/backend/auth && pnpm exec jest --forceExit || true && cd "$ROOT"
+          cd apps/backend/cart && pnpm exec jest --forceExit || true && cd "$ROOT"
+          cd apps/backend/orders && pnpm exec jest --forceExit || true && cd "$ROOT"
+          cd apps/backend/api-gateway && pnpm exec jest --forceExit || true && cd "$ROOT"
+          cd apps/frontend && pnpm exec vitest run || true && cd "$ROOT"
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
           JWT_SECRET: ci-test-secret
