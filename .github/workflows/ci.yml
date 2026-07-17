@@ -65,10 +65,10 @@ jobs:
           JWT_SECRET: ci-test-secret
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm --filter @vladi-cars/frontend lint && pnpm --filter @vladi-cars/catalog lint && pnpm --filter @vladi-cars/auth lint && pnpm --filter @vladi-cars/cart lint && pnpm --filter @vladi-cars/orders lint && pnpm --filter @vladi-cars/api-gateway lint
 
       - name: Test
-        run: pnpm test
+        run: pnpm --filter @vladi-cars/frontend test run && pnpm --filter @vladi-cars/catalog test && pnpm --filter @vladi-cars/auth test && pnpm --filter @vladi-cars/cart test && pnpm --filter @vladi-cars/orders test && pnpm --filter @vladi-cars/api-gateway test
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
           JWT_SECRET: ci-test-secret
@@ -92,7 +92,12 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm prisma:generate
+      - run: |
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/auth/.env
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/catalog/.env
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/cart/.env
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/orders/.env
+          pnpm prisma:generate
 
       - run: pnpm build
 
