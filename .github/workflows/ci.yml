@@ -66,12 +66,12 @@ jobs:
 
       - name: Lint
         run: |
-          cd apps/frontend && pnpm exec tsc --noEmit && cd ../..
-          cd apps/backend/catalog && pnpm exec tsc --noEmit && cd ../../..
-          cd apps/backend/auth && pnpm exec tsc --noEmit && cd ../../..
-          cd apps/backend/cart && pnpm exec tsc --noEmit && cd ../../..
-          cd apps/backend/orders && pnpm exec tsc --noEmit && cd ../../..
-          cd apps/backend/api-gateway && pnpm exec tsc --noEmit && cd ../../..
+          pnpm --filter @vladi-cars/frontend exec tsc --noEmit
+          pnpm --filter @vladi-cars/catalog exec tsc --noEmit
+          pnpm --filter @vladi-cars/auth exec tsc --noEmit
+          pnpm --filter @vladi-cars/cart exec tsc --noEmit
+          pnpm --filter @vladi-cars/orders exec tsc --noEmit
+          pnpm --filter @vladi-cars/api-gateway exec tsc --noEmit
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
 
