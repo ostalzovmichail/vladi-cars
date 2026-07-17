@@ -66,29 +66,23 @@ jobs:
 
       - name: Lint
         run: |
-          cd apps/frontend && ../../node_modules/.bin/tsc --noEmit && cd ../..
-          cd apps/backend/catalog && ../../node_modules/.bin/tsc --noEmit && cd ../../..
-          cd apps/backend/auth && ../../node_modules/.bin/tsc --noEmit && cd ../../..
-          cd apps/backend/cart && ../../node_modules/.bin/tsc --noEmit && cd ../../..
-          cd apps/backend/orders && ../../node_modules/.bin/tsc --noEmit && cd ../../..
-          echo "=== api-gateway check ==="
-          ls -la apps/backend/api-gateway/src/
-          echo "=== dist check ==="
-          ls -la apps/backend/api-gateway/dist/ 2>/dev/null || echo "dist: not found"
-          echo "=== tsc version ==="
-          ../../node_modules/.bin/tsc --version
-          cd apps/backend/api-gateway && ../../node_modules/.bin/tsc --noEmit --listFiles --pretty 2>&1 | head -5 && cd ../../..
+          cd apps/frontend && pnpm exec tsc --noEmit && cd ../..
+          cd apps/backend/catalog && pnpm exec tsc --noEmit && cd ../../..
+          cd apps/backend/auth && pnpm exec tsc --noEmit && cd ../../..
+          cd apps/backend/cart && pnpm exec tsc --noEmit && cd ../../..
+          cd apps/backend/orders && pnpm exec tsc --noEmit && cd ../../..
+          cd apps/backend/api-gateway && pnpm exec tsc --noEmit && cd ../../..
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
 
       - name: Test
         run: |
-          cd apps/backend/catalog && npx --no-install jest --forceExit && cd ../../..
-          cd apps/backend/auth && npx --no-install jest --forceExit && cd ../../..
-          cd apps/backend/cart && npx --no-install jest --forceExit && cd ../../..
-          cd apps/backend/orders && npx --no-install jest --forceExit && cd ../../..
-          cd apps/backend/api-gateway && npx --no-install jest --forceExit && cd ../../..
-          cd apps/frontend && npx --no-install vitest run && cd ../..
+          cd apps/backend/catalog && pnpm exec jest --forceExit && cd ../../..
+          cd apps/backend/auth && pnpm exec jest --forceExit && cd ../../..
+          cd apps/backend/cart && pnpm exec jest --forceExit && cd ../../..
+          cd apps/backend/orders && pnpm exec jest --forceExit && cd ../../..
+          cd apps/backend/api-gateway && pnpm exec jest --forceExit && cd ../../..
+          cd apps/frontend && pnpm exec vitest run && cd ../..
         env:
           DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
           JWT_SECRET: ci-test-secret
