@@ -47,9 +47,12 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Generate Prisma clients
-        run: pnpm prisma:generate
-        env:
-          DATABASE_URL: postgresql://vladi:vladi_secret@localhost:5432/vladi_cars
+        run: |
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/auth/.env
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/catalog/.env
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/cart/.env
+          echo "DATABASE_URL=postgresql://vladi:vladi_secret@localhost:5432/vladi_cars" > apps/backend/orders/.env
+          pnpm prisma:generate
 
       - name: Push DB schema
         run: pnpm db:push
