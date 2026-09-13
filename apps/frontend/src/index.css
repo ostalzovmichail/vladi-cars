@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f5f4f1;
+    color: #1a1a1e;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-widest transition-all font-oswald;
+    background-color: #c8191a;
+    color: white;
+  }
+  .btn-accent:hover {
+    background-color: #a51415;
+    box-shadow: 0 4px 12px rgba(200, 25, 26, 0.2);
+  }
+  .btn-accent:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-full px-6 py-2.5 text-xs font-semibold uppercase tracking-widest transition-all font-oswald;
+    background-color: #eeecea;
+    color: #1a1a1e;
+    border: 1px solid rgba(0,0,0,0.10);
+  }
+  .btn-outline:hover {
+    border-color: #1a1a1e;
+  }
+
+  .input-search {
+    @apply w-full bg-[#eeecea] border border-transparent rounded-full py-2.5 pl-5 pr-12 text-sm placeholder:text-[#7a7a82] outline-none transition-all;
+  }
+  .input-search:focus {
+    border-color: #c8191a;
+    background: white;
+  }
+
+  .badge-original {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] uppercase tracking-widest font-bold;
+    background-color: #c8191a;
+    color: white;
+  }
+
+  .badge-hit {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] uppercase tracking-widest font-bold;
+    background-color: #fbbf24;
+    color: #78350f;
+  }
+
+  .badge-sale {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] uppercase tracking-widest font-bold;
+    background-color: #10b981;
+    color: white;
+  }
+
+  .badge-out {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] uppercase tracking-widest font-bold bg-[#eeecea] text-[#7a7a82];
+  }
+}

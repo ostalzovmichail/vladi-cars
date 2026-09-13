@@ -1,0 +1,253 @@
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1e;
+  margin: 0 0 24px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  transition: box-shadow 0.15s;
+}
+
+.card:hover {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.cardLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.orderThumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #eeecea;
+  flex-shrink: 0;
+}
+
+.orderCount {
+  display: block;
+  font-size: 11px;
+  color: #7a7a82;
+  margin-top: 2px;
+}
+
+.orderId {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #7a7a82;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.orderDate {
+  font-size: 13px;
+  color: #7a7a82;
+}
+
+.cardRight {
+  text-align: right;
+}
+
+.orderTotal {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1e;
+}
+
+.orderStatus {
+  font-size: 12px;
+  color: #7a7a82;
+  text-transform: capitalize;
+}
+
+.empty {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.emptyTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 12px;
+}
+
+.emptyText {
+  font-size: 14px;
+  color: #7a7a82;
+  margin: 0 0 24px;
+}
+
+/* Order detail */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #c8191a;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #7a7a82;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  text-transform: capitalize;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.totalLarge {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1e;
+  margin: 16px 0;
+}
+
+.section {
+  border-top: 1px solid rgba(0,0,0,0.08);
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  color: #1a1a1e;
+}
+
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.orderItem:last-child {
+  border-bottom: none;
+}
+
+.orderItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.orderItemThumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #eeecea;
+  flex-shrink: 0;
+}
+
+.orderItemName {
+  font-size: 14px;
+  color: #1a1a1e;
+}
+
+.orderItemQty {
+  font-size: 12px;
+  color: #7a7a82;
+}
+
+.orderItemPrice {
+  font-size: 14px;
+  color: #1a1a1e;
+  font-weight: 600;
+}
+
+.linkReset {
+  text-decoration: none;
+}
+.loadingCenter {
+  text-align: center;
+  padding: 40px 0;
+}
+.loadingLg {
+  text-align: center;
+  padding: 80px 0;
+}
+.titleMb {
+  margin-bottom: 8px;
+}
+.metaMt {
+  margin-top: 4px;
+}
+.orderItemLink {
+  text-decoration: none;
+  color: #c8191a;
+}
+.continueBtn {
+  display: inline-block;
+  padding: 12px 32px;
+  text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cardRight {
+    text-align: left;
+    width: 100%;
+  }
+
+  .orderItem {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}

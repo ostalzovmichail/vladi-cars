@@ -1,0 +1,60 @@
+FROM node:22-alpine AS builder
+RUN apk add --no-cache openssl
+RUN npm install -g pnpm@11.11.0
+WORKDIR /app
+COPY . .
+RUN pnpm install --frozen-lockfile
+
+RUN pnpm --filter @vladi-cars/auth prisma:generate
+RUN pnpm --filter @vladi-cars/catalog prisma:generate
+RUN pnpm --filter @vladi-cars/cart prisma:generate
+RUN pnpm --filter @vladi-cars/orders prisma:generate
+
+RUN pnpm --filter @vladi-cars/auth build
+RUN pnpm --filter @vladi-cars/api-gateway build
+RUN pnpm --filter @vladi-cars/catalog build
+RUN pnpm --filter @vladi-cars/cart build
+RUN pnpm --filter @vladi-cars/orders build
+
+FROM node:22-alpine AS runner
+RUN apk add --no-cache openssl postgresql-client
+RUN npm install -g pnpm@11.11.0
+WORKDIR /app
+
+COPY --from=builder /app/apps/backend/auth/dist ./apps/backend/auth/dist
+COPY --from=builder /app/apps/backend/api-gateway/dist ./apps/backend/api-gateway/dist
+COPY --from=builder /app/apps/backend/catalog/dist ./apps/backend/catalog/dist
+COPY --from=builder /app/apps/backend/cart/dist ./apps/backend/cart/dist
+COPY --from=builder /app/apps/backend/orders/dist ./apps/backend/orders/dist
+
+COPY --from=builder /app/apps/backend/auth/package.json ./apps/backend/auth/package.json
+COPY --from=builder /app/apps/backend/api-gateway/package.json ./apps/backend/api-gateway/package.json
+COPY --from=builder /app/apps/backend/catalog/package.json ./apps/backend/catalog/package.json
+COPY --from=builder /app/apps/backend/cart/package.json ./apps/backend/cart/package.json
+COPY --from=builder /app/apps/backend/orders/package.json ./apps/backend/orders/package.json
+
+COPY --from=builder /app/apps/backend/auth/prisma ./apps/backend/auth/prisma
+COPY --from=builder /app/apps/backend/catalog/prisma ./apps/backend/catalog/prisma
+COPY --from=builder /app/apps/backend/cart/prisma ./apps/backend/cart/prisma
+COPY --from=builder /app/apps/backend/orders/prisma ./apps/backend/orders/prisma
+
+COPY --from=builder /app/apps/backend/auth/prisma.config.ts ./apps/backend/auth/prisma.config.ts
+COPY --from=builder /app/apps/backend/catalog/prisma.config.ts ./apps/backend/catalog/prisma.config.ts
+COPY --from=builder /app/apps/backend/cart/prisma.config.ts ./apps/backend/cart/prisma.config.ts
+COPY --from=builder /app/apps/backend/orders/prisma.config.ts ./apps/backend/orders/prisma.config.ts
+
+COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/turbo.json ./turbo.json
+COPY --from=builder /app/packages ./packages
+
+RUN pnpm install --prod --frozen-lockfile
+
+RUN mkdir -p uploads
+
+COPY apps/backend/start.sh ./start.sh
+RUN chmod +x start.sh
+
+EXPOSE 3000
+CMD ["./start.sh"]

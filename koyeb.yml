@@ -1,0 +1,24 @@
+name: vladi-cars
+
+services:
+  - name: backend
+    type: docker
+    dockerfile: apps/backend/Dockerfile.monolith
+    port: 3000
+    env:
+      - key: DATABASE_URL
+        value: postgresql://vladi_cars:<password>@<host>:<port>/vladi_cars?sslmode=require
+      - key: JWT_SECRET
+        secret: jwt_secret
+      - key: CORS_ORIGIN
+        value: https://<app-name>.koyeb.app
+      - key: LOG_LEVEL
+        value: info
+
+  - name: frontend
+    type: docker
+    dockerfile: apps/frontend/Dockerfile.koyeb
+    port: 80
+    env:
+      - key: BACKEND_INTERNAL_URL
+        value: backend:3000

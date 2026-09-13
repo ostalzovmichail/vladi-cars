@@ -1,0 +1,79 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: vladi
+      POSTGRES_PASSWORD: vladi_secret
+      POSTGRES_DB: vladi_cars
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: apps/backend/api-gateway/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - catalog
+      - auth
+      - cart
+      - orders
+
+  catalog:
+    build:
+      context: .
+      dockerfile: apps/backend/catalog/Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgresql://vladi:vladi_secret@postgres:5432/vladi_cars
+    depends_on:
+      - postgres
+
+  cart:
+    build:
+      context: .
+      dockerfile: apps/backend/cart/Dockerfile
+    ports:
+      - "3002:3002"
+    environment:
+      DATABASE_URL: postgresql://vladi:vladi_secret@postgres:5432/vladi_cars
+    depends_on:
+      - postgres
+
+  orders:
+    build:
+      context: .
+      dockerfile: apps/backend/orders/Dockerfile
+    ports:
+      - "3003:3003"
+    environment:
+      DATABASE_URL: postgresql://vladi:vladi_secret@postgres:5432/vladi_cars
+    depends_on:
+      - postgres
+
+  auth:
+    build:
+      context: .
+      dockerfile: apps/backend/auth/Dockerfile
+    ports:
+      - "3004:3004"
+    environment:
+      DATABASE_URL: postgresql://vladi:vladi_secret@postgres:5432/vladi_cars
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api-gateway
+
+volumes:
+  pgdata:

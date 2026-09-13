@@ -1,0 +1,827 @@
+/* Hero */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.heroBg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, white 40%, transparent);
+}
+
+@media (max-width: 640px) {
+  .heroOverlay {
+    background: linear-gradient(to right, white 60%, transparent);
+  }
+}
+
+.heroInner {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 16px;
+}
+
+@media (min-width: 1024px) {
+  .heroInner {
+    padding: 120px 16px;
+  }
+}
+
+.heroContent {
+  max-width: 520px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200, 25, 26, 0.08);
+  color: #c8191a;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 24px;
+}
+
+.heroBadgeDot {
+  width: 6px;
+  height: 6px;
+  background: #c8191a;
+  border-radius: 999px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.heroTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #1a1a1e;
+  margin: 0 0 20px;
+}
+
+@media (min-width: 1024px) {
+  .heroTitle {
+    font-size: 64px;
+  }
+}
+
+.heroAccent {
+  color: #c8191a;
+}
+
+.heroText {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #7a7a82;
+  margin: 0 0 32px;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.heroStats {
+  display: flex;
+  gap: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.heroStatValue {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a1e;
+  line-height: 1;
+}
+
+.heroStatLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7a7a82;
+  margin-top: 4px;
+}
+
+/* Trust bar */
+.trust {
+  background: #eeecea;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.trustInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .trustInner {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.trustItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.trustIconWrap {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background: rgba(200, 25, 26, 0.08);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trustIcon {
+  color: #c8191a;
+}
+
+.trustTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1e;
+  margin: 0 0 2px;
+}
+
+.trustText {
+  font-size: 12px;
+  color: #7a7a82;
+  margin: 0;
+}
+
+/* Section */
+.section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 56px 16px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #1a1a1e;
+  margin: 0;
+}
+
+.sectionLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #c8191a;
+  text-decoration: none;
+  transition: gap 0.15s;
+}
+
+.sectionLink:hover {
+  gap: 8px;
+}
+
+/* Brand categories */
+.brandGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .brandGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .brandGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.brandCard {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 20px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+
+.brandCard:hover {
+  border-color: #c8191a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.brandEmoji {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.brandName {
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1e;
+  line-height: 1.2;
+}
+
+.brandCount {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #7a7a82;
+  margin-top: 4px;
+}
+
+.brandCta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #c8191a;
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.brandCard:hover .brandCta {
+  opacity: 1;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 6px 18px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.10);
+  background: white;
+  color: #7a7a82;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab:hover {
+  border-color: #1a1a1e;
+  color: #1a1a1e;
+}
+
+.tabActive {
+  background: #c8191a;
+  color: white;
+  border-color: #c8191a;
+  box-shadow: 0 4px 12px rgba(200, 25, 26, 0.2);
+}
+
+/* Products grid */
+.productGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .productGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.productCard {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCard:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: rgba(200, 25, 26, 0.3);
+}
+
+.productImageWrap {
+  position: relative;
+  height: 180px;
+  background: #eeecea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.productImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
+
+.productImageIcon {
+  position: absolute;
+  color: rgba(0,0,0,0.10);
+}
+
+.productBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+.productOutOfStock {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px 16px 0 0;
+}
+
+.productOutOfStock span {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7a7a82;
+}
+
+.productBody {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.productArt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #7a7a82;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.productName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1e;
+  line-height: 1.4;
+  margin: 0 0 4px;
+  flex: 1;
+}
+
+.productBrand {
+  font-size: 12px;
+  color: #7a7a82;
+  margin: 0 0 12px;
+}
+
+.productRating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.starFilled {
+  color: #f59e0b;
+  fill: #f59e0b;
+}
+
+.starEmpty {
+  color: rgba(0,0,0,0.10);
+}
+
+.ratingText {
+  font-size: 11px;
+  color: #7a7a82;
+}
+
+.productFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.priceWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.priceCurrent {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1e;
+  line-height: 1;
+}
+
+.priceOld {
+  font-size: 12px;
+  color: #7a7a82;
+  text-decoration: line-through;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  background: #c8191a;
+  color: white;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.addBtn:hover {
+  background: #a51415;
+  box-shadow: 0 4px 12px rgba(200, 25, 26, 0.2);
+}
+
+.addBtn:disabled {
+  background: #eeecea;
+  color: #7a7a82;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* VIN section */
+.vinSection {
+  background: white;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.vinInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (min-width: 1024px) {
+  .vinInner {
+    flex-direction: row;
+  }
+}
+
+.vinInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  max-width: 600px;
+}
+
+.vinIconWrap {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: rgba(200, 25, 26, 0.08);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vinIcon {
+  color: #c8191a;
+}
+
+.vinLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: #c8191a;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 8px;
+}
+
+.vinTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1a1a1e;
+  margin: 0 0 8px;
+}
+
+.vinText {
+  font-size: 14px;
+  color: #7a7a82;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.vinForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.vinInputRow {
+  display: flex;
+  gap: 8px;
+}
+
+.vinInput {
+  flex: 1;
+  background: #eeecea;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  outline: none;
+  transition: all 0.15s;
+}
+
+.vinInput:focus {
+  border-color: #c8191a;
+  background: white;
+}
+
+.vinNote {
+  font-size: 11px;
+  color: #7a7a82;
+  padding-left: 4px;
+}
+
+/* Brands strip */
+.brandsSection {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.brandsTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  color: #1a1a1e;
+  margin: 0 0 32px;
+}
+
+.brandsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .brandsGrid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+.brandPill {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 12px;
+  padding: 16px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.brandPill:hover {
+  border-color: #c8191a;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.brandPillText {
+  font-family: 'Oswald', sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7a7a82;
+  text-align: center;
+  transition: color 0.15s;
+}
+
+.brandPill:hover .brandPillText {
+  color: #1a1a1e;
+}
+
+/* Reviews */
+.reviewsSection {
+  background: #eeecea;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.reviewsInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 16px;
+}
+
+.reviewsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.reviewsTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1a1a1e;
+  margin: 0;
+}
+
+.reviewsOverall {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reviewsOverallStars {
+  display: flex;
+  gap: 2px;
+}
+
+.reviewsOverallText {
+  font-size: 13px;
+  color: #7a7a82;
+}
+
+.reviewsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .reviewsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.reviewCard {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 20px;
+  transition: box-shadow 0.15s;
+}
+
+.reviewCard:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.reviewStars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+
+.reviewText {
+  font-size: 14px;
+  color: #1a1a1e;
+  line-height: 1.6;
+  margin: 0 0 16px;
+  font-style: italic;
+}
+
+.reviewAuthor {
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.reviewName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1a1e;
+}
+
+.reviewCity {
+  font-size: 11px;
+  color: #7a7a82;
+}
+
+.reviewCar {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #7a7a82;
+}
+
+/* Product tab sections */
+.productsBg {
+  background: #eeecea;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+
+.heroArrowSvg {
+  margin-left: 4px;
+}
+.skeletonBlock {
+  height: 14px;
+  background: #eeecea;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.productError {
+  grid-column: 1 / -1;
+  color: #7a7a82;
+}
+.vinButton {
+  padding: 12px 24px;
+}
